@@ -17,7 +17,7 @@ import classes from './NavbarSimpleColored.module.css';
 import useAuthStore from '../../hooks/useAuthStore';
 
 const data = [
-  { link: '', label: 'Home', icon: IconBellRinging },
+  // { link: '', label: 'Home', icon: IconBellRinging },
   { link: '', label: 'Courses', icon: IconReceipt2 },
   { link: '', label: 'Settings', icon: IconFingerprint },
 ];

@@ -14,17 +14,15 @@ import { AuthenticationImage } from './Components/AuthenticationImage/Authentica
 import Frontpage from "./Components/Frontpage/Frontpage";
 
 //SA Components
-
+import CourseListPage from "./Components/CourseListPage/CourseListPage";
+import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
 
 //Stores
 import useAuthStore from "./hooks/useAuthStore";
 
 function App() {
 
-
   const { user } = useAuthStore();
-
-
 
   return (
     <Router>
