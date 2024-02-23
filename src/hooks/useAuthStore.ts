@@ -12,11 +12,11 @@ const useAuthStore = create<AuthState>((set) => ({
     isAuthenticated: false,
     user: null,
     token: null,
-    login: (username, password) => {
+    login: (email, password) => {
         // Perform authentication logic here
         // For example, make an API call to validate the credentials
         // If the credentials are valid, set isAuthenticated to true and set the user
-        set({ isAuthenticated: true, user: username });
+        set({ isAuthenticated: true, user: email });
     },
     logout: () => {
         // Perform logout logic here
