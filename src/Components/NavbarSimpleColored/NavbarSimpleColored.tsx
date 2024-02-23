@@ -14,6 +14,8 @@ import {
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './NavbarSimpleColored.module.css';
 
+import useAuthStore from '../../hooks/useAuthStore';
+
 const data = [
   { link: '', label: 'Home', icon: IconBellRinging },
   { link: '', label: 'Courses', icon: IconReceipt2 },
@@ -22,6 +24,8 @@ const data = [
 
 export function NavbarSimpleColored() {
   const [active, setActive] = useState('Billing');
+
+  const { logout } = useAuthStore();
 
   const links = data.map((item) => (
     <a
@@ -58,7 +62,7 @@ export function NavbarSimpleColored() {
           <span>Change account</span>
         </a> */}
 
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href="#" className={classes.link} onClick={() => logout()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>

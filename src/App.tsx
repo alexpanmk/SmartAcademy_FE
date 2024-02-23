@@ -15,8 +15,14 @@ import Frontpage from "./Components/Frontpage/Frontpage";
 
 //SA Components
 
+
+//Stores
+import useAuthStore from "./hooks/useAuthStore";
+
 function App() {
-  const [user, setUser] = useState("alexpan@gmail.com")
+
+
+  const { user } = useAuthStore();
 
 
 
