@@ -29,8 +29,6 @@ function App() {
       {user ? (
         <Routes>
           <Route path="/" element={<Frontpage />} />
-          <Route path="/courses" element={<CourseListPage />} />
-          <Route path="/courses/:courseId" element={<CourseViewPage />} />
         </Routes>
       )
         : (

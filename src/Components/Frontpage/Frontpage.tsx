@@ -4,28 +4,29 @@ import React, { useState, useEffect } from 'react'
 import { AppShell } from '@mantine/core'
 // import { NavbarMinimal } from '../NavbarMinimal/NavbarMinimal'
 import { NavbarSimpleColored } from '../NavbarSimpleColored/NavbarSimpleColored'
+import CourseListPage from '../CourseListPage/CourseListPage'
+
+
 
 function Frontpage() {
+
+    //TODO: track nav selection to render the right pages in the main section
+
+
     return (
         <AppShell
             padding="md"
-            header={{ height: 0 }}
+            header={{ height: 80 }}
             navbar={{
-                // height: "1000px",
-
+                width: 300
             }}
         >
             {/* <AppShell.Header >Header</AppShell.Header> */}
             <AppShell.Navbar>
                 <NavbarSimpleColored />
             </AppShell.Navbar>
-            <AppShell.Main>
-                {/* <Button onClick={toggleDesktop} visibleFrom="sm">
-                    Toggle navbar
-                </Button>
-                <Button onClick={toggleMobile} hiddenFrom="sm">
-                    Toggle navbar
-                </Button> */}
+            <AppShell.Main pl={315}>
+                <CourseListPage />
             </AppShell.Main>
         </AppShell>
     )
