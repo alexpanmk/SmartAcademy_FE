@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react'
 
 // UI Components
 import { AppShell } from '@mantine/core'
-import { NavbarMinimal } from '../NavbarMinimal/NavbarMinimal'
+// import { NavbarMinimal } from '../NavbarMinimal/NavbarMinimal'
+import { NavbarSimpleColored } from '../NavbarSimpleColored/NavbarSimpleColored'
 
 function Frontpage() {
     return (
         <AppShell
             padding="md"
-            header={{ height: 60 }}
-        // navbar={{
-        //     width: 300,
-        //     breakpoint: 'sm',
-        //     collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
-        // }}
+            header={{ height: 0 }}
+            navbar={{
+                // height: "1000px",
+
+            }}
         >
-            <AppShell.Header>Header</AppShell.Header>
+            {/* <AppShell.Header >Header</AppShell.Header> */}
             <AppShell.Navbar>
-                <NavbarMinimal />
+                <NavbarSimpleColored />
             </AppShell.Navbar>
             <AppShell.Main>
                 {/* <Button onClick={toggleDesktop} visibleFrom="sm">
