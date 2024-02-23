@@ -13,8 +13,9 @@ import {
 } from '@tabler/icons-react';
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './NavbarSimpleColored.module.css';
-
+import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../../hooks/useAuthStore';
+
 
 const data = [
   // { link: '', label: 'Home', icon: IconBellRinging },
@@ -23,6 +24,9 @@ const data = [
 ];
 
 export function NavbarSimpleColored() {
+
+  let navigate = useNavigate();
+
   const [active, setActive] = useState('Billing');
 
   const { logout } = useAuthStore();
