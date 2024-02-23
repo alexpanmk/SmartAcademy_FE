@@ -18,6 +18,8 @@ import Frontpage from "./Components/Frontpage/Frontpage";
 function App() {
   const [user, setUser] = useState("alexpan@gmail.com")
 
+
+
   return (
     <Router>
       {user ? (
