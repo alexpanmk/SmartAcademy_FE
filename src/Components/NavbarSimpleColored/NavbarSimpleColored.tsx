@@ -51,7 +51,7 @@ export function NavbarSimpleColored() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-          {/* <Title order={2} className={classes.title}>SMART ACADEMY</Title> */}
+          <Title order={2} className={classes.title}>SMART ACADEMY</Title>
           {/* <MantineLogo size={28} inverted style={{ color: 'white' }} />
           <Code fw={700} className={classes.version}>
             v3.1.2

@@ -1,23 +1,39 @@
 //Page to show list of course
 //To show different views for learner and course creators
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Grid, Skeleton, Container } from '@mantine/core';
+import {
+    Stack,
+    Text,
+    Paper,
+    Button, Group, Title, Grid, Skeleton
+} from '@mantine/core';
+import { Calendar } from '@mantine/dates'
 
-const child = <Skeleton height={140} radius="md" animate={false} />
+const child = <Skeleton height={160} radius="md" animate={false} />
 
 function CourseListPage() {
+    const [value, setValue] = useState<Date | null>(null);
+
 
     return (
 
         <Grid>
-            <Grid.Col span={{ base: 12, xs: 4 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 8 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 8 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 4 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 3 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 3 }}>{child}</Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 6 }}>{child}</Grid.Col>
+            <Grid.Col mih={75} span={{ base: 12, xs: 12 }}>
+                <Group justify='space-between'>
+                    <Title order={1}>Courses</Title>
+                    <Button size="md" variant="light" radius="md">Create</Button>
+                </Group>
+            </Grid.Col>
+
+            <Grid.Col span={{ base: 12, xs: 9 }}>
+                {/* Course List */}
+
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, xs: 3 }}>
+                <Calendar size='md' />
+            </Grid.Col>
+
         </Grid>
 
     )

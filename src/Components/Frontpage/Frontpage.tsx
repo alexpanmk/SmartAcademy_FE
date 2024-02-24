@@ -16,7 +16,7 @@ function Frontpage() {
     return (
         <AppShell
             padding="md"
-            header={{ height: 80 }}
+            header={{ height: 0 }}
             navbar={{
                 width: 300
             }}
