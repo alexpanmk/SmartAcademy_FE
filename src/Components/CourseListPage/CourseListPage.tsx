@@ -10,6 +10,8 @@ import {
 } from '@mantine/core';
 import { Calendar } from '@mantine/dates'
 
+import CourseList from './CourseList'
+
 const child = <Skeleton height={160} radius="md" animate={false} />
 
 function CourseListPage() {
@@ -22,12 +24,12 @@ function CourseListPage() {
             <Grid.Col mih={75} span={{ base: 12, xs: 12 }}>
                 <Group justify='space-between'>
                     <Title order={1}>Courses</Title>
-                    <Button size="md" variant="light" radius="md">Create</Button>
+                    <Button size="md" variant="light" radius="md">Create New Course</Button>
                 </Group>
             </Grid.Col>
 
             <Grid.Col span={{ base: 12, xs: 9 }}>
-                {/* Course List */}
+                <CourseList />
 
             </Grid.Col>
             <Grid.Col span={{ base: 12, xs: 3 }}>

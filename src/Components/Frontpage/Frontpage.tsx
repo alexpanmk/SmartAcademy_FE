@@ -7,11 +7,9 @@ import { NavbarSimpleColored } from '../NavbarSimpleColored/NavbarSimpleColored'
 import CourseListPage from '../CourseListPage/CourseListPage'
 
 
-
 function Frontpage() {
 
     //TODO: track nav selection to render the right pages in the main section
-
 
     return (
         <AppShell

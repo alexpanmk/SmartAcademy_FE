@@ -13,7 +13,9 @@ import {
 } from '@tabler/icons-react';
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './NavbarSimpleColored.module.css';
-import { useNavigate } from 'react-router-dom';
+
+import { SignOutButton } from '@clerk/clerk-react';
+
 import useAuthStore from '../../hooks/useAuthStore';
 
 
@@ -25,7 +27,7 @@ const data = [
 
 export function NavbarSimpleColored() {
 
-  let navigate = useNavigate();
+
 
   const [active, setActive] = useState('Billing');
 
@@ -65,11 +67,12 @@ export function NavbarSimpleColored() {
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
         </a> */}
-
-        <a href="#" className={classes.link} onClick={() => logout()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
-        </a>
+        <SignOutButton>
+          <a href="#" className={classes.link} onClick={() => logout()}>
+            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <span>Logout</span>
+          </a>
+        </SignOutButton>
       </div>
     </nav>
   );
