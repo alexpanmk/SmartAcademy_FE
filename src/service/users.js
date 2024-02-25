@@ -1,5 +1,5 @@
-import * as usersAPI from "../api/users";
-import { getToken,removeToken } from "../util/security";
+import * as usersAPI from "../../api/users";
+import { getToken,removeToken } from "../../util/security";
 
 
 export async function getUserByUsername(username) {
