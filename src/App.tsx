@@ -20,24 +20,53 @@ import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
 //Stores
 import useAuthStore from "./hooks/useAuthStore";
 
+//Auth
+import { SignedOut, SignedIn } from "@clerk/clerk-react";
+
+//UI Components
+import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimpleColored";
+
+
 function App() {
 
   const { user } = useAuthStore();
 
   return (
-    <Router>
-      {user ? (
-        <Routes>
-          <Route path="/" element={<Frontpage />} />
-        </Routes>
-      )
-        : (
-          <Routes>
-            <Route path="/" element={<AuthenticationImage />} />
-            <Route path="/signup" element={<AuthenticationImage />} />
-          </Routes>
-        )}
-    </Router >
+    <AppShell
+      padding="md"
+      header={{ height: 0 }}
+      navbar={{
+        width: 300
+      }}>
+
+      <SignedOut>
+        <AuthenticationImage />
+      </SignedOut>
+
+      <SignedIn>
+
+        <AppShell.Navbar>
+          <NavbarSimpleColored />
+        </AppShell.Navbar>
+        <AppShell.Main pl={315}>
+          <CourseListPage />
+        </AppShell.Main>
+
+      </SignedIn>
+    </AppShell >
+    // <Router>
+    //   {user ? (
+    //     <Routes>
+    //       <Route path="/" element={<Frontpage />} />
+    //     </Routes>
+    //   )
+    //     : (
+    //       <Routes>
+    //         <Route path="/" element={<AuthenticationImage />} />
+    //         <Route path="/signup" element={<AuthenticationImage />} />
+    //       </Routes>
+    //     )}
+    // </Router >
   )
 }
 export default App
