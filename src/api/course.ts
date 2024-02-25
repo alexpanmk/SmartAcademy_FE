@@ -1,12 +1,12 @@
-const BASE_URL = "http://localhost:3000/courses";
+const BASE_URL = "http://localhost:3000/course";
 
 //TODO: Remember to include token in the headers
 
 
-export async function getCourses() {
+export async function getCourses(token) {
     const response = await fetch(BASE_URL, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}`},
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
     });
 
     if (response.ok) {
