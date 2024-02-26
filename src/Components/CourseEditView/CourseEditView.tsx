@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { Space, Stepper, Button, Group, Stack } from '@mantine/core'
 
+import QuizBuilder from '../QuizBuilder/QuizBuilder';
+
 function CourseEditView(props) {
 
     const { closeEditModal, editDetails } = props;
@@ -27,8 +29,12 @@ function CourseEditView(props) {
                     </Group>
                 </Stepper.Step>
                 <Stepper.Step label="Course Content">
-
-
+                    <QuizBuilder />
+                    <Group justify={"flex-end"}>
+                        <Button onClick={prevStep}>Previous</Button>
+                        <Button onClick={nextStep}>Next</Button>
+                        <Button onClick={closeEditModal}>Cancel</Button>
+                    </Group>
                 </Stepper.Step>
                 <Stepper.Step label="Course Settings" />
             </Stepper >
