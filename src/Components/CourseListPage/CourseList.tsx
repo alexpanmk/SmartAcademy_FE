@@ -26,7 +26,7 @@ function CourseList() {
         <>
             <Stack>
                 {courseList.map((course: any) => {
-                    return <CourseItem courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
+                    return <CourseItem key={course._id} id={course._id} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
                 })}
             </Stack>
         </>
