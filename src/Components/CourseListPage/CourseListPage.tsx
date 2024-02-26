@@ -45,7 +45,7 @@ function CourseListPage() {
 
             </Grid>
             <Modal size={"lg"} opened={courseEditModalOpened} onClose={closeEditModal} title="Edit Course">
-                <CourseEditView editDetails={editDetails} />
+                <CourseEditView editDetails={editDetails} closeEditModal={closeEditModal} />
             </Modal>
 
         </>
