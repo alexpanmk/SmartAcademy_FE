@@ -1,8 +1,10 @@
 //Page to show list of course
 //To show different views for learner and course creators
 import React, { useState } from 'react'
+import { useDisclosure } from '@mantine/hooks';
 
 import {
+    Modal,
     Stack,
     Text,
     Paper,
@@ -11,32 +13,43 @@ import {
 import { Calendar } from '@mantine/dates'
 
 import CourseList from './CourseList'
+import CourseEditView from '../CourseEditView/CourseEditView';
 
 const child = <Skeleton height={160} radius="md" animate={false} />
 
 function CourseListPage() {
     const [value, setValue] = useState<Date | null>(null);
 
+    const [courseEditModalOpened, { open: openEditModal, close: closeEditModal }] = useDisclosure(false);
+    const [editDetails, setEditDetails] = useState({
+        editMode: false, //false for create, true for edit
+        courseId: ""
+    })
 
     return (
+        <>
+            <Grid>
+                <Grid.Col mih={75} span={{ base: 12, xs: 12 }}>
+                    <Group justify='space-between'>
+                        <Title order={1}>Courses</Title>
+                        <Button onClick={openEditModal} size="md" variant="light" radius="md">Create New Course</Button>
+                    </Group>
+                </Grid.Col>
 
-        <Grid>
-            <Grid.Col mih={75} span={{ base: 12, xs: 12 }}>
-                <Group justify='space-between'>
-                    <Title order={1}>Courses</Title>
-                    <Button size="md" variant="light" radius="md">Create New Course</Button>
-                </Group>
-            </Grid.Col>
+                <Grid.Col span={{ base: 12, xs: 9 }}>
+                    <CourseList />
+                </Grid.Col>
+                <Grid.Col span={{ base: 12, xs: 3 }}>
+                    <Calendar size='md' />
+                </Grid.Col>
 
-            <Grid.Col span={{ base: 12, xs: 9 }}>
-                <CourseList />
+            </Grid>
+            <Modal size={"lg"} opened={courseEditModalOpened} onClose={closeEditModal} title="Edit Course">
+                <CourseEditView editDetails={editDetails} />
+            </Modal>
 
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 3 }}>
-                <Calendar size='md' />
-            </Grid.Col>
+        </>
 
-        </Grid>
 
     )
 }

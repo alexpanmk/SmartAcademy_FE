@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Paper, Stack, Title, Text, Group, Button, Image } from '@mantine/core'
+import { Space, Paper, Stack, Title, Text, Group, Button, Image } from '@mantine/core'
+import { deleteCourse } from '../../service/course';
+
+import { useAuth } from '@clerk/clerk-react'
 
 function CourseItem(props: any) {
 
     //Props: course name, course description, course image
-    const { courseName, courseDescription, courseImage } = props;
+    const { id, courseName, courseDescription, courseImage } = props;
 
+    //TODO: Modal for delete confirmation
 
     return (
         <Paper shadow="xs" p="xl" h="200" direction="row" wrap="wrap" justify="space-between">
@@ -16,10 +20,13 @@ function CourseItem(props: any) {
                 <Title order={3}>{courseName}</Title>
                 <Text>{courseDescription}</Text>
             </Stack>
+            <Space h="xl" />
             <Group justify='flex-end'>
                 <Button size="md" variant="light" radius="md">Preview</Button>
                 <Button size="md" variant="light" radius="md">Edit</Button>
-                <Button size="md" variant="light" radius="md">Delete</Button>
+                <Button onClick={() => {
+                    deleteCourse(id);
+                }} size="md" variant="light" radius="md">Delete</Button>
             </Group>
         </Paper>
     )

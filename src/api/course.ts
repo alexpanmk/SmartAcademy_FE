@@ -1,6 +1,5 @@
 const BASE_URL = "http://localhost:3000/course";
-
-//TODO: Remember to include token in the headers
+import { useAuth } from '@clerk/clerk-react';
 
 
 export async function getCourses(token) {

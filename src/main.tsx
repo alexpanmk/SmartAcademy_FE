@@ -12,10 +12,10 @@ if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
 }
 
+
+
 import { ClerkProvider } from '@clerk/clerk-react'
 import { MantineProvider } from '@mantine/core';
-
-
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
