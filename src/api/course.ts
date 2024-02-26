@@ -16,9 +16,9 @@ export async function getCourses(token) {
         console.error('Error response body:', errorBody);
         throw new Error('Failed to get courses');
     }
-
-
 }
+
+
 
 
 //Get course by id
