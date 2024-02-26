@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useDisclosure } from '@mantine/hooks';
 
 import {
+    Flex,
     Modal,
     Stack,
     Text,
@@ -44,8 +45,12 @@ function CourseListPage() {
                 </Grid.Col>
 
             </Grid>
-            <Modal size={"lg"} opened={courseEditModalOpened} onClose={closeEditModal} title="Edit Course">
-                <CourseEditView editDetails={editDetails} closeEditModal={closeEditModal} />
+            <Modal size={"auto"} opened={courseEditModalOpened} onClose={closeEditModal} title={
+                editDetails.editMode ? "Edit Course" : "Create New Course"
+            }>
+                <Flex p={20} miw={1000} direction="column">
+                    <CourseEditView editDetails={editDetails} closeEditModal={closeEditModal} />
+                </Flex>
             </Modal>
 
         </>
