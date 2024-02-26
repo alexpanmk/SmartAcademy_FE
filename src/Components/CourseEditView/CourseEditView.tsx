@@ -28,8 +28,9 @@ function CourseEditView(props) {
                         <Button onClick={closeEditModal}>Cancel</Button>
                     </Group>
                 </Stepper.Step>
-                <Stepper.Step label="Course Content">
+                <Stepper.Step label="Initial Course Content">
                     <QuizBuilder />
+                    <Space h="xl" />
                     <Group justify={"flex-end"}>
                         <Button onClick={prevStep}>Previous</Button>
                         <Button onClick={nextStep}>Next</Button>
