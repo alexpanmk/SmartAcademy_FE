@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Stack, Group, Title, Text } from '@mantine/core'
 
-function QuizBuilder(props: any) {
 
-    const [questions, setQuestions] = useState([])
+function ContentBuilder(props: any) {
+
+    const [content, setContent] = useState([])
 
     // Assumption: 3 wrong answers and 1 right answer
-    const handleAddButton = (questionType) => {
+    const handleAddButton = (contentType) => {
 
-        const newQuestionList = [...questions];
+        const newContentList = [...content];
 
-        newQuestionList.push({
-            question: "",
-            questionType: questionType,
+        newContentList.push({
+            content: "",
+            contentType: contentType,
             answers: []
         })
 
-        console.log("Add Question Button Clicked")
+        setContent(newContentList)
 
     }
 
@@ -28,6 +29,8 @@ function QuizBuilder(props: any) {
             </Stack>
 
 
+
+
             <Group mih={100} grow >
                 <Button onClick={() => { handleAddButton("MCQ") }} mih={50} variant="default">{"Add Question"}</Button>
                 <Button onClick={() => { handleAddButton("Video") }} mih={50} variant="default">{"Add Video Link"}</Button>
@@ -36,4 +39,4 @@ function QuizBuilder(props: any) {
     )
 }
 
-export default QuizBuilder
+export default ContentBuilder

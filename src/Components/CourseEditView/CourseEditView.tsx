@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import { Space, Stepper, Button, Group, Stack } from '@mantine/core'
 
-import QuizBuilder from '../QuizBuilder/QuizBuilder';
+import QuizBuilder from '../ContentBuilder/ContentBuilder';
 
 function CourseEditView(props) {
 
     const { closeEditModal, editDetails } = props;
 
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
     const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
     const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current))
     // Edit or Create new for cse
