@@ -21,7 +21,7 @@ import classes from './AuthenticationImage.module.css';
 //hook for modal state
 import { useDisclosure } from '@mantine/hooks';
 
-import useAuthStore from '../../hooks/useAuthStore';
+import useAuthStore from '../../stores/useAuthStore';
 
 import { SignInButton } from "@clerk/clerk-react";
 import { SignIn } from '@clerk/clerk-react';

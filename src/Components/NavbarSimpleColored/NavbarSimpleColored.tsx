@@ -16,7 +16,7 @@ import classes from './NavbarSimpleColored.module.css';
 
 import { SignOutButton } from '@clerk/clerk-react';
 
-import useAuthStore from '../../hooks/useAuthStore';
+import useAuthStore from '../../stores/useAuthStore';
 
 
 const data = [

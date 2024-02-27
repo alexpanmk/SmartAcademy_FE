@@ -18,7 +18,7 @@ import CourseListPage from "./Components/CourseListPage/CourseListPage";
 import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
 
 //Stores
-import useAuthStore from "./hooks/useAuthStore";
+import useAuthStore from "./stores/useAuthStore";
 
 //Auth
 import { SignedOut, SignedIn } from "@clerk/clerk-react";

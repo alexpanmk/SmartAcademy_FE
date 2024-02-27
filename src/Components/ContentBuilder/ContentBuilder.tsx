@@ -4,12 +4,12 @@ import { Button, Stack, Group, Title, Text } from '@mantine/core'
 
 function ContentBuilder(props: any) {
 
-    const [content, setContent] = useState([])
+    const [contentList, setContentList] = useState([])
 
     // Assumption: 3 wrong answers and 1 right answer
     const handleAddButton = (contentType) => {
 
-        const newContentList = [...content];
+        const newContentList = [...contentList];
 
         newContentList.push({
             content: "",
@@ -17,7 +17,7 @@ function ContentBuilder(props: any) {
             answers: []
         })
 
-        setContent(newContentList)
+        setContenList(newContentList)
 
     }
 
