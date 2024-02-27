@@ -7,7 +7,7 @@ import { useAuth } from '@clerk/clerk-react'
 function CourseItem(props: any) {
 
     //Props: course name, course description, course image
-    const { id, courseName, courseDescription, courseImage } = props;
+    const { id, courseName, courseDescription, courseImage, editDetails, SetEditDetails } = props;
 
     //TODO: Modal for delete confirmation
 

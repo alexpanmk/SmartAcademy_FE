@@ -1,8 +1,8 @@
-import { create }  from zustand;
+import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 //Course service imports
-import { Course } from '../service/course';
+import { getCourseList } from '../service/course';
 
 // type Course = {
 //     id: string;
@@ -17,17 +17,28 @@ import { Course } from '../service/course';
 //     waitlist: number;
 // }
 
-type CourseState = {
-    courses: Course[];
-    addCourse: (course: Course) => void;
-    removeCourse: (id: string) => void;
-    updateCourse: (course: Course) => void;
-    deleteCourse: (id: string) => void;
-}
+// type CourseState = {
+//     courses: Course[];
+//     addCourse: (course: Course) => void;
+//     removeCourse: (id: string) => void;
+//     updateCourse: (course: Course) => void;
+//     deleteCourse: (id: string) => void;
+// }
 
-const useCourseStore = create<CourseState>(immer((set) => ({
+const useCourseStore = create<any>(immer((set) => ({
     //To fetch the courses from the course service
     courses: [],
+    fetchCourses: async (token) => {
+        const response = await getCourseList(token);
+        set((state) => {
+            state.courses = response.courses;
+        });
+    },
+    retrieveCourse: (id) => { 
+        return set((state) => {
+            return state.courses.find((course) => course.id === id);
+        });
+    },
     addCourse: (course) => set((state) => {
         state.courses.push(course);
     }),
@@ -41,6 +52,10 @@ const useCourseStore = create<CourseState>(immer((set) => ({
     deleteCourse: (id) => set((state) => {
         state.courses = state.courses.filter((course) => course.id !== id);
     }),
+
+    
+
+
 })));
 
 export default useCourseStore;

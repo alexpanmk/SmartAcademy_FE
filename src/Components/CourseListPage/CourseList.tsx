@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import CourseItem from './CourseItem'
 
-import { getCourseList } from '../../service/course'
+//TODO: Remove this
+// import { getCourseList } from '../../service/course'
+
+import useCourseStore from '../../stores/useCourseStore'
+
 import { useAuth } from '@clerk/clerk-react'
 
 
 import { Paper, Stack, Title, Text } from '@mantine/core'
 
-function CourseList() {
+function CourseList(props) {
 
-    const [courseList, setCourseList] = useState([])
+    const { editDetails, setEditDetails } = props
+
+    const { courses, fetchCourses, setCourseList } = useCourseStore()
     const { user, getToken } = useAuth()
 
     useEffect(() => {
-        const fetchCourseList = async () => {
-            const token = await getToken()
-            const response = await getCourseList(token)
-            setCourseList(response.courses)
-        }
-        fetchCourseList()
+        //To fetch the courses and store it in store
+        fetchCourses(getToken())
     }, [])
 
 
     return (
         <>
             <Stack>
-                {courseList.map((course: any) => {
-                    return <CourseItem key={course._id} id={course._id} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
+
+                {courses.map((course: any) => {
+                    return <CourseItem key={course._id} id={course._id} editDetails={editDetails} setEditDetails={setEditDetails} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
                 })}
             </Stack>
         </>

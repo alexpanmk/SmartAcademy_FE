@@ -1,6 +1,6 @@
 //Page to show list of course
 //To show different views for learner and course creators
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDisclosure } from '@mantine/hooks';
 
 import {
@@ -27,6 +27,14 @@ function CourseListPage() {
         courseId: ""
     })
 
+    useEffect(() => {
+        //To open modal if edit mode is true
+        if (editDetails.editMode) {
+            openEditModal()
+        }
+    }, [editDetails.editMode])
+
+
     return (
         <>
             <Grid>
@@ -38,7 +46,7 @@ function CourseListPage() {
                 </Grid.Col>
 
                 <Grid.Col span={{ base: 12, xs: 9 }}>
-                    <CourseList />
+                    <CourseList editDetails={editDetails} setEditDetails={setEditDetails} />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, xs: 3 }}>
                     <Calendar size='md' />
