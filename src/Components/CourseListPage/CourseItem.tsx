@@ -9,7 +9,6 @@ function CourseItem(props: any) {
     //Props: course name, course description, course image
     const { id, courseName, courseDescription, courseImage, handleEdit } = props;
 
-
     return (
         <>
             <Paper shadow="xs" p="xl" h="200" direction="row" wrap="wrap" justify="space-between">

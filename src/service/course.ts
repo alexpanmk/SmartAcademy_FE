@@ -4,7 +4,7 @@ export const getCourseList = async (token) => {
     return await courseAPI.getCourses();
 }
 
-export const getCourse = async (courseId, token) => {
+export const getCourse = async (courseId ,token) => {
     return await courseAPI.getCourse(courseId, token);
 }
 

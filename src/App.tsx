@@ -21,7 +21,7 @@ import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
 import useAuthStore from "./stores/useAuthStore";
 
 //Auth
-import { SignedOut, SignedIn } from "@clerk/clerk-react";
+import { SignedOut, SignedIn, useAuth } from "@clerk/clerk-react";
 
 //UI Components
 import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimpleColored";
@@ -29,7 +29,15 @@ import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimp
 
 function App() {
 
-  const { user } = useAuthStore();
+  const { saveToken, token } = useAuthStore();
+  const { user, getToken } = useAuth();
+
+  useEffect(() => {
+    //Try save token to store
+    saveToken(getToken());
+
+  }, []);
+
 
   return (
     <AppShell

@@ -18,8 +18,6 @@ export async function getCourses(token) {
 }
 
 
-
-
 //Get course by id
 export async function getCourse(courseId, token) {
     const getURL = `${BASE_URL}/${courseId}`;
@@ -77,7 +75,7 @@ export async function createCourse(courseData, token) {
     const createURL = `${BASE_URL}/create`;
     const response = await fetch(createURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token} `},
         body: JSON.stringify(courseData)
     });
 

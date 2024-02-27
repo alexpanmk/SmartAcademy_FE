@@ -1,13 +1,40 @@
 import React, { useEffect, useState } from 'react'
 
-import { Space, Stepper, Button, Group, Stack } from '@mantine/core'
+import { Text, Space, Stepper, Button, Group, Stack } from '@mantine/core'
 
 import ContentBuilder from '../ContentBuilder/ContentBuilder';
 
+//fetch course
+import { getCourse } from '../../service/course';
+import useAuthStore from '../../stores/useAuthStore';
+
+
+//From courses Store
+import useCourseStore from '../../stores/useCourseStore';
+
 function CourseEditView(props) {
 
-    //TODO: To load course according to the id
+    const { courses, fetchCourses, setCourseList } = useCourseStore()
 
+    const { editDetails } = props;
+    const { getToken } = useAuthStore()
+
+    const [course, setCourse] = useState({})
+    const [error, setError] = useState(null)
+
+    //DONE: To load course according to the id
+    //TODO: Save course when save button is clicked
+    useEffect(() => {
+
+        console.log(courses)
+        console.log(editDetails.courseId)
+
+        //to filter course from the courses
+        const course = courses.find((course) => course._id === editDetails.courseId)
+
+        setCourse(course)
+
+    }, [])
 
     const { closeEditModal } = props;
 
@@ -21,9 +48,10 @@ function CourseEditView(props) {
             <Stepper active={active} onStepClick={setActive}>
                 <Stepper.Step label="Course Details">
                     <Stack direction="column" spacing="md">
-                        <input type="text" placeholder="Course Image URL" />
-                        <input type="text" placeholder="Course Title" />
-                        <textarea placeholder="Course Description" />
+
+                        {/* <input type="text" placeholder="Course Image URL" /> */}
+                        <input value={course.title} type="text" placeholder="Course Title" />
+                        <textarea value={course.description} placeholder="Course Description" />
                         <Space h="xl" />
                     </Stack>
                     <Group justify={"flex-end"}>

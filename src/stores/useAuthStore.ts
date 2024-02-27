@@ -1,28 +1,24 @@
 import create from 'zustand';
+import { immer } from 'zustand/middleware/immer';
 
-type AuthState = {
-    isAuthenticated: boolean;
-    user: string | null;
-    token: string | null;
-    login: (username: string, password: string) => void;
-    logout: () => void;
-};
+// type AuthState = {
+//     isAuthenticated: boolean;
+//     user: string | null;
+//     token: string | null;
+//     login: (username: string, password: string) => void;
+//     logout: () => void;
+// };
 
-const useAuthStore = create<AuthState>((set) => ({
-    isAuthenticated: false,
-    user: null,
+const useAuthStore = create<any>(immer((set) => ({
+  
     token: null,
-    login: (email, password) => {
-        // Perform authentication logic here
-        // For example, make an API call to validate the credentials
-        // If the credentials are valid, set isAuthenticated to true and set the user
-        set({ isAuthenticated: true, user: email });
-    },
-    logout: () => {
-        // Perform logout logic here
-        // For example, clear the authentication token and reset the user
-        set({ isAuthenticated: false, user: null });
-    },
-}));
+    saveToken: (token) => { 
+        set((state) => {
+            state.token = token;
+        });
+    }
+    ,
+
+})))
 
 export default useAuthStore;

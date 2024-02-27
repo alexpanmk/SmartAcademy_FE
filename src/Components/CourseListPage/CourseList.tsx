@@ -27,7 +27,6 @@ function CourseList(props) {
     return (
         <>
             <Stack>
-
                 {courses.map((course: any) => {
                     return <CourseItem key={course._id} id={course._id} handleEdit={handleEdit} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
                 })}

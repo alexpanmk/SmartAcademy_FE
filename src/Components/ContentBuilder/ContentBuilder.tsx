@@ -25,7 +25,7 @@ function ContentBuilder(props: any) {
     return (
         <>
             <Stack direction="column" spacing="md">
-                <Title order={3}>Quiz Builder</Title>
+                <Title order={3}>Content Builder</Title>
                 <Text>Build your quiz by adding questions and answers</Text>
             </Stack>
 
