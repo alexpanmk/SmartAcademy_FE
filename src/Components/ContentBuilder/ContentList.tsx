@@ -6,7 +6,10 @@ import ContentItem from './ContentItem';
 // Question, Options
 function ContentList(prop) {
 
-    const { contentList } = prop;
+    console.log("ContentList: ", prop.contentList)
+
+    const [contentList] = useState(prop.contentList)
+
 
     return (
         <>
