@@ -23,7 +23,11 @@ function CourseItem(props: any) {
             <Space h="xl" />
             <Group justify='flex-end'>
                 <Button size="md" variant="light" radius="md">Preview</Button>
-                <Button size="md" variant="light" radius="md">Edit</Button>
+                <Button onClick={
+                    () => {
+                        SetEditDetails({ editMode: true, courseId: id });
+                    }
+                } size="md" variant="light" radius="md">Edit</Button>
                 <Button onClick={() => {
                     deleteCourse(id);
                 }} size="md" variant="light" radius="md">Delete</Button>
