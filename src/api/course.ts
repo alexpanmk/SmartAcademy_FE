@@ -72,6 +72,23 @@ export async function deleteCourse(courseId, token) {
     }
 }
 
+//Create course
+export async function createCourse(courseData, token) {
+    const createURL = `${BASE_URL}/create`;
+    const response = await fetch(createURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+        body: JSON.stringify(courseData)
+    });
+
+    if (response.ok) {
+        return response.json();
+    } else {
+        const errorBody = await response.text();
+        console.error('Error response body:', errorBody);
+        throw new Error('Failed to create course');
+    }
+}
 
 
 

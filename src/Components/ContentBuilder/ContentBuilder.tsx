@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Stack, Group, Title, Text } from '@mantine/core'
 
+import ContentList from './ContentList'
 
 function ContentBuilder(props: any) {
 
@@ -28,7 +29,7 @@ function ContentBuilder(props: any) {
                 <Text>Build your quiz by adding questions and answers</Text>
             </Stack>
 
-
+            <ContentList contentList={contentList} />
 
 
             <Group mih={100} grow >
