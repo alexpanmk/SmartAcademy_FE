@@ -13,7 +13,7 @@ import { Paper, Stack, Title, Text } from '@mantine/core'
 
 function CourseList(props) {
 
-    const { editDetails, setEditDetails } = props
+    const { handleEdit } = props
 
     const { courses, fetchCourses, setCourseList } = useCourseStore()
     const { user, getToken } = useAuth()
@@ -29,7 +29,7 @@ function CourseList(props) {
             <Stack>
 
                 {courses.map((course: any) => {
-                    return <CourseItem key={course._id} id={course._id} editDetails={editDetails} setEditDetails={setEditDetails} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
+                    return <CourseItem key={course._id} id={course._id} handleEdit={handleEdit} courseName={course.title} courseDescription={course.description} courseImage={"course.image"} />
                 })}
             </Stack>
         </>

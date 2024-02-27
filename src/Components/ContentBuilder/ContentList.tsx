@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Stack, Flex, Paper, Title, Text, Group, Button } from '@mantine/core'
+import { Space, Stack, Flex, Paper, Title, Text, Group, Button } from '@mantine/core'
 
 import ContentItem from './ContentItem';
 
@@ -12,9 +12,15 @@ function ContentList(prop) {
         <>
             {contentList.map((content: any, index: number) => {
                 return (
-                    <Paper shadow="xs" p="xl" h="200" direction="row" wrap="wrap" justify="space-between">
+                    <>
+                        <Paper miw={1000} shadow="xs" p="xl" direction="column" justify="space-between">
 
-                    </Paper>
+                            <ContentItem contentItem={content} />
+
+                        </Paper>
+                        <Space h="xl" />
+                    </>
+
                 )
             })}
         </>

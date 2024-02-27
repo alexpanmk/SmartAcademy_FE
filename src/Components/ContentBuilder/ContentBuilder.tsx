@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Stack, Group, Title, Text } from '@mantine/core'
+import { Flex, Button, Stack, Group, Title, Text } from '@mantine/core'
 
 import ContentList from './ContentList'
 
@@ -18,7 +18,7 @@ function ContentBuilder(props: any) {
             answers: []
         })
 
-        setContenList(newContentList)
+        setContentList(newContentList)
 
     }
 
@@ -29,8 +29,9 @@ function ContentBuilder(props: any) {
                 <Text>Build your quiz by adding questions and answers</Text>
             </Stack>
 
-            <ContentList contentList={contentList} />
-
+            <Flex direction="column" spacing="md">
+                <ContentList contentList={contentList} />
+            </Flex>
 
             <Group mih={100} grow >
                 <Button onClick={() => { handleAddButton("MCQ") }} mih={50} variant="default">{"Add Question"}</Button>

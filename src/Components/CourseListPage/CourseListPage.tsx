@@ -18,22 +18,19 @@ import CourseEditView from '../CourseEditView/CourseEditView';
 
 const child = <Skeleton height={160} radius="md" animate={false} />
 
-function CourseListPage() {
+function CourseListPage(props) {
     const [value, setValue] = useState<Date | null>(null);
 
     const [courseEditModalOpened, { open: openEditModal, close: closeEditModal }] = useDisclosure(false);
     const [editDetails, setEditDetails] = useState({
-        editMode: false, //false for create, true for edit
-        courseId: ""
+
     })
 
-    useEffect(() => {
-        //To open modal if edit mode is true
-        if (editDetails.editMode) {
-            openEditModal()
-        }
-    }, [editDetails.editMode])
 
+    const handleEdit = (courseId: string) => {
+        setEditDetails({ editMode: true, courseId: courseId });
+        openEditModal();
+    }
 
     return (
         <>
@@ -46,7 +43,7 @@ function CourseListPage() {
                 </Grid.Col>
 
                 <Grid.Col span={{ base: 12, xs: 9 }}>
-                    <CourseList editDetails={editDetails} setEditDetails={setEditDetails} />
+                    <CourseList handleEdit={handleEdit} />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, xs: 3 }}>
                     <Calendar size='md' />

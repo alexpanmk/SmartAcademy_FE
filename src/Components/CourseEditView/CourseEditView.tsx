@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import { Space, Stepper, Button, Group, Stack } from '@mantine/core'
 
-import QuizBuilder from '../ContentBuilder/ContentBuilder';
+import ContentBuilder from '../ContentBuilder/ContentBuilder';
 
 function CourseEditView(props) {
 
-    const { closeEditModal, editDetails } = props;
+    //TODO: To load course according to the id
+
+
+    const { closeEditModal } = props;
 
     const [active, setActive] = useState(0);
     const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
@@ -25,15 +28,17 @@ function CourseEditView(props) {
                     </Stack>
                     <Group justify={"flex-end"}>
                         <Button onClick={nextStep}>Next</Button>
+                        <Button>Save</Button>
                         <Button onClick={closeEditModal}>Cancel</Button>
                     </Group>
                 </Stepper.Step>
                 <Stepper.Step label="Initial Course Content">
-                    <QuizBuilder />
+                    <ContentBuilder />
                     <Space h="xl" />
                     <Group justify={"flex-end"}>
                         <Button onClick={prevStep}>Previous</Button>
                         <Button onClick={nextStep}>Next</Button>
+                        <Button>Save</Button>
                         <Button onClick={closeEditModal}>Cancel</Button>
                     </Group>
                 </Stepper.Step>
