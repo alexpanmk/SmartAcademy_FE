@@ -4,7 +4,12 @@ import { deleteCourse } from '../../service/course';
 
 import { useAuth } from '@clerk/clerk-react'
 
+//React-Router imports
+import { useNavigate } from 'react-router-dom';
+
 function CourseItem(props: any) {
+
+    const navigate = useNavigate();
 
     //Props: course name, course description, course image
     const { id, courseName, courseDescription, courseImage, handleEdit } = props;
@@ -21,7 +26,9 @@ function CourseItem(props: any) {
                 </Stack>
                 <Space h="xl" />
                 <Group justify='flex-end'>
-                    <Button size="md" variant="light" radius="md">Preview</Button>
+                    <Button onClick={() => {
+                        navigate(`/learner/${id}`);
+                    }} size="md" variant="light" radius="md">Preview</Button>
                     <Button onClick={() => {
                         handleEdit(id);
                     }} size="md" variant="light" radius="md">Edit</Button>

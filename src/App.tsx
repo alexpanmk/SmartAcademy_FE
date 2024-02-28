@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Switch,
+  useNavigate,
 } from "react-router-dom";
 // TODO: import { getUser } from "./service/users";
 
@@ -16,6 +17,7 @@ import Frontpage from "./Components/Frontpage/Frontpage";
 //SA Components
 import CourseListPage from "./Components/CourseListPage/CourseListPage";
 import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
+import LearnerView from "./Components/LearnerView/LearnerView";
 
 //Stores
 import useAuthStore from "./stores/useAuthStore";
@@ -52,29 +54,23 @@ function App() {
       </SignedOut>
 
       <SignedIn>
-
         <AppShell.Navbar>
           <NavbarSimpleColored />
         </AppShell.Navbar>
         <AppShell.Main pl={315}>
-          <CourseListPage />
+          <Router>
+
+            <Routes>
+              {/* <Route path="/" element={<Frontpage />} /> */}
+              <Route path="/" element={<CourseListPage />} />
+              <Route path="/learner/:courseId" element={<LearnerView />} />
+              {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
+            </Routes>
+          </Router>
         </AppShell.Main>
 
       </SignedIn>
     </AppShell >
-    // <Router>
-    //   {user ? (
-    //     <Routes>
-    //       <Route path="/" element={<Frontpage />} />
-    //     </Routes>
-    //   )
-    //     : (
-    //       <Routes>
-    //         <Route path="/" element={<AuthenticationImage />} />
-    //         <Route path="/signup" element={<AuthenticationImage />} />
-    //       </Routes>
-    //     )}
-    // </Router >
   )
 }
 export default App
