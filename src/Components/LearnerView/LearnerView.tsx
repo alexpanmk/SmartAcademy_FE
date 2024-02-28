@@ -62,7 +62,6 @@ function LearnerView() {
     // To show the result of the quiz
 
 
-
     //To send in the responses upon completion of quiz
 
     // To show the result of the quiz

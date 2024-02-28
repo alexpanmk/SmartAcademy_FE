@@ -4,6 +4,7 @@ import { Flex, Button, Stack, Group, Title, Text } from '@mantine/core'
 import ContentList from './ContentList'
 
 function ContentBuilder(props: any) {
+    console.log(props)
 
     const [contentList, setContentList] = useState([])
 
@@ -35,7 +36,7 @@ function ContentBuilder(props: any) {
 
             <Group mih={100} grow >
                 <Button onClick={() => { handleAddButton("MCQ") }} mih={50} variant="default">{"Add Question"}</Button>
-                <Button onClick={() => { handleAddButton("Video") }} mih={50} variant="default">{"Add Video Link"}</Button>
+                {/* <Button onClick={() => { handleAddButton("Video") }} mih={50} variant="default">{"Add Video Link"}</Button> */}
             </Group>
         </>
     )

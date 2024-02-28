@@ -12,7 +12,7 @@ import { AppShell } from '@mantine/core'
 
 //UI Components
 import { AuthenticationImage } from './Components/AuthenticationImage/AuthenticationImage'
-import Frontpage from "./Components/Frontpage/Frontpage";
+// import Frontpage from "./Components/Frontpage/Frontpage";
 
 //SA Components
 import CourseListPage from "./Components/CourseListPage/CourseListPage";
@@ -27,6 +27,7 @@ import { SignedOut, SignedIn, useAuth } from "@clerk/clerk-react";
 
 //UI Components
 import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimpleColored";
+import CourseEditView from "./Components/CourseEditView/CourseEditView";
 
 
 function App() {
@@ -61,9 +62,9 @@ function App() {
           <Router>
 
             <Routes>
-              {/* <Route path="/" element={<Frontpage />} /> */}
               <Route path="/" element={<CourseListPage />} />
               <Route path="/learner/:courseId" element={<LearnerView />} />
+              <Route path="/creator/:courseId" element={<CourseEditView />} />
               {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
             </Routes>
           </Router>

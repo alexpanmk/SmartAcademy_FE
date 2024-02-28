@@ -13,6 +13,7 @@ import useAuthStore from '../../stores/useAuthStore';
 import useCourseStore from '../../stores/useCourseStore';
 
 function CourseEditView(props) {
+    console.log(props)
 
     const { courses, fetchCourses, setCourseList } = useCourseStore()
 
@@ -60,7 +61,7 @@ function CourseEditView(props) {
                         <Button onClick={closeEditModal}>Cancel</Button>
                     </Group>
                 </Stepper.Step>
-                <Stepper.Step label="Initial Course Content">
+                <Stepper.Step label="Course Content">
                     <ContentBuilder />
                     <Space h="xl" />
                     <Group justify={"flex-end"}>
