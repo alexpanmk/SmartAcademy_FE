@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Title, Group, Code } from '@mantine/core';
 import {
-  IconBellRinging,
+  IconNotebook,
   IconFingerprint,
   IconKey,
   IconSettings,
@@ -19,9 +19,10 @@ import { SignOutButton } from '@clerk/clerk-react';
 import useAuthStore from '../../stores/useAuthStore';
 
 
+
 const data = [
   // { link: '', label: 'Home', icon: IconBellRinging },
-  { link: '/courses', label: 'Courses', icon: IconReceipt2 },
+  { link: '/', label: 'Courses', icon: IconNotebook },
   { link: '', label: 'Settings', icon: IconFingerprint },
 ];
 

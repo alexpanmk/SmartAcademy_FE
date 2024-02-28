@@ -66,6 +66,9 @@ function CourseEditView(props) {
     return (
         <>
             <Title order={1}>{isEditMode ? "Edit Course" : "NewCourse"}</Title>
+
+            <Space h="xl" />
+
             <Stepper active={active} onStepClick={setActive}>
                 <Stepper.Step label="Course Details">
                     <Stack direction="column" spacing="md">
