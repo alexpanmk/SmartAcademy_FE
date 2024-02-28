@@ -17,6 +17,10 @@ import { useParams } from 'react-router-dom';
 import useCourseStore from '../../stores/useCourseStore';
 import { useAuth } from '@clerk/clerk-react';
 
+//SA Imports
+import QuestionList from './QuestionList';
+
+
 function CourseEditView(props) {
     console.log(props)
 
@@ -106,9 +110,8 @@ function CourseEditView(props) {
 
     // }
 
-    const handleQuestionsChange = () => {
-
-
+    const handleQuestionsChange = (questions) => {
+        setCourse({ ...course, questions })
     }
 
 
@@ -141,7 +144,9 @@ function CourseEditView(props) {
                         {/* Content builder to return questions array */}
                         {/* <ContentBuilder questions={course.questions} onChange={handleQuestionsChange} /> */}
 
-                        {course.questions.map((question, index) => {
+                        <QuestionList questions={course.questions} handleQuestionsChange={handleQuestionsChange} />
+
+                        {/* {course.questions.map((question, index) => {
                             return (
                                 <>
                                     <Paper key={index} shadow="xs" p="xl" direction="column" justify="space-between">
@@ -173,7 +178,7 @@ function CourseEditView(props) {
                                 </>
                             )
                         })
-                        }
+                        } */}
 
 
                         <Space h="xl" />
