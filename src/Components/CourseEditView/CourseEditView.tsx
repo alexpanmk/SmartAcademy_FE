@@ -25,14 +25,13 @@ import QuestionList from './QuestionList';
 function CourseEditView(props) {
     console.log(props)
 
+    //Course ID from router route
     const { courseId } = useParams()
 
     const { courses, fetchCourses } = useCourseStore()
 
     const { editDetails } = props;
     const { getToken } = useAuth();
-
-
 
     const [isEditMode, setIsEditMode] = useState(courseId ? true : false)
     const [course, setCourse] = useState(
@@ -42,14 +41,17 @@ function CourseEditView(props) {
             questions: []
         }
     )
+    const [questions, setQuestions] = useState([])
 
-    const [questions, setQuestions] = useState(course.questions)
+    //TODO: Context for unsaved changes across children
+    const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+
+
 
 
     const [updatedForm, setUpdatedForm] = useState({});
     const [error, setError] = useState(null)
 
-    //DONE: To load course according to the id
     //TODO: Save course when save button is clicked
     //TODO: when courseID is falsy means course is new.
     //TODO: Cancel to confirm discard changes
@@ -59,12 +61,12 @@ function CourseEditView(props) {
 
         console.log(courses)
 
-
-        //to filter course from the courses
+        //to filter course from the courses if in edit mode
         // const course = courses.find((course) => course._id === editDetails.courseId)
         if (isEditMode) {
             const course = courses.find((course) => course._id === courseId)
             setCourse(course)
+
         }
 
     }, [])
@@ -139,7 +141,7 @@ function CourseEditView(props) {
                     </Stepper.Step>
                     <Stepper.Step label="Course Content">
 
-                        <QuestionList questions={questions} setQuestions={setQuestions} />
+                        <QuestionList questions={course.questions} />
 
                         {/* {course.questions.map((question, index) => {
                             return (
