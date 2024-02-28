@@ -30,7 +30,9 @@ import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimp
 import CourseEditView from "./Components/CourseEditView/CourseEditView";
 
 
+
 function App() {
+
 
   const { saveToken, token } = useAuthStore();
   const { user, getToken } = useAuth();
@@ -55,11 +57,12 @@ function App() {
       </SignedOut>
 
       <SignedIn>
-        <AppShell.Navbar>
-          <NavbarSimpleColored />
-        </AppShell.Navbar>
-        <AppShell.Main pl={315}>
-          <Router>
+        <Router>
+          <AppShell.Navbar>
+            <NavbarSimpleColored />
+          </AppShell.Navbar>
+          <AppShell.Main pl={315}>
+
 
             <Routes>
               <Route path="/" element={<CourseListPage />} />
@@ -67,9 +70,9 @@ function App() {
               <Route path="/course/edit/:courseId" element={<CourseEditView />} />
               {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
             </Routes>
-          </Router>
-        </AppShell.Main>
 
+          </AppShell.Main>
+        </Router>
       </SignedIn>
     </AppShell >
   )
