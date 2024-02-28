@@ -64,7 +64,7 @@ function App() {
             <Routes>
               <Route path="/" element={<CourseListPage />} />
               <Route path="/learner/:courseId" element={<LearnerView />} />
-              <Route path="/creator/:courseId" element={<CourseEditView />} />
+              <Route path="/course/edit/:courseId" element={<CourseEditView />} />
               {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
             </Routes>
           </Router>

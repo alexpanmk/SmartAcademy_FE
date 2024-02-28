@@ -30,7 +30,7 @@ function CourseItem(props: any) {
                         navigate(`/learner/${id}`);
                     }} size="md" variant="light" radius="md">Preview</Button>
                     <Button onClick={() => {
-                        handleEdit(id);
+                        navigate(`/course/edit/${id}`);
                     }} size="md" variant="light" radius="md">Edit</Button>
                     <Button onClick={() => {
                         deleteCourse(id);
