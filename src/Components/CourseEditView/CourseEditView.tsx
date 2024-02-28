@@ -4,8 +4,9 @@ import { Text, Title, Space, Stepper, Button, Group, Stack } from '@mantine/core
 
 import ContentBuilder from '../ContentBuilder/ContentBuilder';
 
-//fetch course
-import { getCourse } from '../../service/course';
+//Course service
+import { getCourse, updateCourse } from '../../service/course';
+
 import useAuthStore from '../../stores/useAuthStore';
 
 //Nav imports
@@ -14,6 +15,7 @@ import { useParams } from 'react-router-dom';
 
 //From courses Store
 import useCourseStore from '../../stores/useCourseStore';
+import { useAuth } from '@clerk/clerk-react';
 
 function CourseEditView(props) {
     console.log(props)
@@ -23,7 +25,9 @@ function CourseEditView(props) {
     const { courses, fetchCourses, setCourseList } = useCourseStore()
 
     const { editDetails } = props;
-    const { getToken } = useAuthStore()
+    const { getToken } = useAuth();
+
+
 
     const [isEditMode, setIsEditMode] = useState(courseId ? true : false)
     const [course, setCourse] = useState(
@@ -33,6 +37,8 @@ function CourseEditView(props) {
             questions: []
         }
     )
+
+    const [updatedForm, setUpdatedForm] = useState({});
 
     const [error, setError] = useState(null)
 
@@ -63,12 +69,27 @@ function CourseEditView(props) {
     const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current))
     // Edit or Create new for cse
 
-    const handleSave = () => {
+    const handleSave = async () => {
+        //TODO: Confirmation for save
+        console.log("Saving Course");
 
+        if (isEditMode) {
+            try {
+
+                await updateCourse(course._id, updatedForm, getToken())
+                fetchCourses(getToken())
+            } catch (error) {
+                setError(error)
+            }
+        }
     }
 
     const handleFieldChange = (e) => {
         const { id, value } = e.target;
+
+        console.log(id, value)
+
+        setUpdatedForm({ ...updatedForm, [id]: value }) //for update
         setCourse({ ...course, [id]: value })
     }
 
@@ -87,7 +108,7 @@ function CourseEditView(props) {
                             <Text fw="bold">Course Title</Text>
                             <input onChange={handleFieldChange} id="title" value={course.title} type="text" placeholder="Course Title" />
                             <Text fw="bold">Course Description</Text>
-                            <textarea id="description" value={course.description} placeholder="Course Description" />
+                            <textarea onChange={handleFieldChange} id="description" value={course.description} placeholder="Course Description" />
                             <Space h="xl" />
                         </Stack>
                         <Group justify={"flex-end"}>

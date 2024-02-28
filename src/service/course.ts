@@ -9,6 +9,7 @@ export const getCourse = async (courseId ,token) => {
 }
 
 export const updateCourse = async (courseId, courseData, token) => {
+    console.log(courseData);
     return await courseAPI.updateCourse(courseId, courseData, token);
 }
 

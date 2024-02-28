@@ -39,7 +39,7 @@ export async function getCourse(courseId, token) {
 export async function updateCourse(courseId, courseData, token) {
     const updateURL = `${BASE_URL}/${courseId}`;
     const response = await fetch(updateURL, {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
         body: JSON.stringify(courseData)
     });
