@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-
 import { Checkbox, Text, Paper, Title, Space, Stepper, Button, Group, Stack } from '@mantine/core'
+
+import { useForm } from '@mantine/form'
 
 import ContentBuilder from '../ContentBuilder/ContentBuilder';
 
@@ -26,7 +27,7 @@ function CourseEditView(props) {
 
     const { courseId } = useParams()
 
-    const { courses, fetchCourses, setCourseList } = useCourseStore()
+    const { courses, fetchCourses } = useCourseStore()
 
     const { editDetails } = props;
     const { getToken } = useAuth();
@@ -42,10 +43,10 @@ function CourseEditView(props) {
         }
     )
 
+    const [questions, setQuestions] = useState(course.questions)
 
 
     const [updatedForm, setUpdatedForm] = useState({});
-
     const [error, setError] = useState(null)
 
     //DONE: To load course according to the id
@@ -110,10 +111,6 @@ function CourseEditView(props) {
 
     // }
 
-    const handleQuestionsChange = (questions) => {
-        setCourse({ ...course, questions })
-    }
-
 
 
     return (
@@ -141,10 +138,8 @@ function CourseEditView(props) {
                         </Group>
                     </Stepper.Step>
                     <Stepper.Step label="Course Content">
-                        {/* Content builder to return questions array */}
-                        {/* <ContentBuilder questions={course.questions} onChange={handleQuestionsChange} /> */}
 
-                        <QuestionList questions={course.questions} handleQuestionsChange={handleQuestionsChange} />
+                        <QuestionList questions={questions} setQuestions={setQuestions} />
 
                         {/* {course.questions.map((question, index) => {
                             return (

@@ -3,15 +3,8 @@ import { Space, Stack, Flex, Paper, Title, Text, Group, Button, Switch } from '@
 
 function QuestionList(props) {
 
-    const { questions, handleQuestionsChange } = props;
+    const { questions, setQuestions } = props;
 
-
-    //Propagate up the changes
-    const handleQuestionFieldChange = (evt) => {
-        const newQuestions = [...questions];
-        newQuestions[evt.target.id].questionText = evt.target.value;
-        handleQuestionsChange(newQuestions)
-    }
 
     return (
         <>
