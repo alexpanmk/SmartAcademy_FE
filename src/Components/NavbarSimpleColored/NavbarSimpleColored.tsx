@@ -18,7 +18,7 @@ import { SignOutButton } from '@clerk/clerk-react';
 
 import useAuthStore from '../../stores/useAuthStore';
 
-
+import { useNavigate } from 'react-router-dom';
 
 const data = [
   // { link: '', label: 'Home', icon: IconBellRinging },
@@ -28,7 +28,7 @@ const data = [
 
 export function NavbarSimpleColored() {
 
-
+  const navigate = useNavigate();
 
   const [active, setActive] = useState('Billing');
 
@@ -42,6 +42,7 @@ export function NavbarSimpleColored() {
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
+        navigate(item.link);
         setActive(item.label);
       }}
     >
