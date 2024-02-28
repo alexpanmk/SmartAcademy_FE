@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Text, Title, Space, Stepper, Button, Group, Stack } from '@mantine/core'
+import { Checkbox, Text, Paper, Title, Space, Stepper, Button, Group, Stack } from '@mantine/core'
 
 import ContentBuilder from '../ContentBuilder/ContentBuilder';
 
@@ -37,6 +37,8 @@ function CourseEditView(props) {
             questions: []
         }
     )
+
+
 
     const [updatedForm, setUpdatedForm] = useState({});
 
@@ -75,7 +77,6 @@ function CourseEditView(props) {
 
         if (isEditMode) {
             try {
-
                 await updateCourse(course._id, updatedForm, getToken())
                 fetchCourses(getToken())
             } catch (error) {
@@ -92,6 +93,25 @@ function CourseEditView(props) {
         setUpdatedForm({ ...updatedForm, [id]: value }) //for update
         setCourse({ ...course, [id]: value })
     }
+
+    // const handleQuestionFieldChange = (e) => {
+    //     const { id, value } = e.target;
+    //     console.log(id, value)
+
+    //     let prevQuestion = course.questions[id]
+    //     const newQuestion = { ...prevQuestion, questionText: value }
+    //     const newQuestionList = { ...course.questions, newQuestion }
+
+
+
+    // }
+
+    const handleQuestionsChange = () => {
+
+
+    }
+
+
 
     return (
         <>
@@ -118,7 +138,44 @@ function CourseEditView(props) {
                         </Group>
                     </Stepper.Step>
                     <Stepper.Step label="Course Content">
-                        <ContentBuilder />
+                        {/* Content builder to return questions array */}
+                        {/* <ContentBuilder questions={course.questions} onChange={handleQuestionsChange} /> */}
+
+                        {course.questions.map((question, index) => {
+                            return (
+                                <>
+                                    <Paper key={index} shadow="xs" p="xl" direction="column" justify="space-between">
+
+                                        <Stack direction="column" spacing="md">
+                                            <Text fw="bold">Question {index + 1}</Text>
+                                            <input onChange={handleQuestionFieldChange} id={index} value={question.questionText} type="text" placeholder="Question" />
+
+                                            {question.options.map((option, optionIndex) => {
+                                                return (
+                                                    <>
+                                                        <Text fw="bold">Option {optionIndex + 1}
+                                                            {optionIndex === 0 ? " (Right Answer)" : " (Wrong Answer)"}
+                                                        </Text>
+                                                        <Group grow>
+                                                            <Stack>
+                                                                <input onChange={(evt) => {
+                                                                    handleOptionFieldChange(index, optionIndex, evt.target.value)
+                                                                }} key={optionIndex} id={index} value={option} type="text" placeholder="Option" />
+                                                            </Stack>
+                                                        </Group>
+                                                    </>
+                                                )
+                                            }
+                                            )}
+                                        </Stack>
+                                    </Paper>
+                                    <Space h="xl" />
+                                </>
+                            )
+                        })
+                        }
+
+
                         <Space h="xl" />
                         <Group justify={"flex-end"}>
                             <Button onClick={prevStep}>Previous</Button>
@@ -131,7 +188,7 @@ function CourseEditView(props) {
                 </Stepper >
 
 
-            </Stack>
+            </Stack >
 
 
         </>
