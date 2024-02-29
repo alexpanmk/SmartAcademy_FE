@@ -3,6 +3,7 @@ import { Space, Stack, Flex, Paper, Title, Text, Group, Button, Switch } from '@
 import { useForm } from '@mantine/form';
 import { useDebouncedValue } from '@mantine/hooks';
 
+import OptionList from './OptionList';
 import Option from './Option';
 
 function Question(props) {
@@ -27,14 +28,27 @@ function Question(props) {
                     <input onChange={(evt) => { setQuestionText(evt.target.value) }} value={questionText} type="text" placeholder="Question" />
 
 
-
                     {question.options.map((option, index) => {
+                        return <OptionList onChange={
+                            (option) => {
+                                const newOptions = [...question.options];
+                                newOptions[index] = option;
+
+                                console.log(newOptions[index])
+
+                            }} option={option} key={index} index={index} />
+                    })}
+
+
+                    {/* {question.options.map((option, index) => {
                         return <Option onChange={
                             (option) => {
                                 const newOptions = [...question.options];
                                 newOptions[index] = option;
 
-                                //TODO: fix this
+                                console.log(newOptions[index])
+
+                                //TODO: fix this: To merge with question and propagate up
                                 onChange({ ...question, options: newOptions }
 
                                 )
@@ -42,7 +56,7 @@ function Question(props) {
 
                         } option={option} key={index} index={index} />
                     }
-                    )}
+                    )} */}
                 </Stack>
             </Paper>
         </>
