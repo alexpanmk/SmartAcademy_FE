@@ -26,13 +26,17 @@ function OptionList(props) {
     return (
         <>
             {optionList.map((option, index) => {
-                return <Option onChange={
-                    (option) => {
-                        const newOptions = [...optionList];
-                        newOptions[index] = option;
-                        setOptionList(newOptions);
+                return (
+                    <>
+                        <Option onChange={
+                            (option) => {
+                                const newOptions = [...optionList];
+                                newOptions[index] = option;
+                                setOptionList(newOptions);
 
-                    }} option={option} key={index} index={index} />
+                            }} option={option} key={index} index={index} />
+                    </>
+                )
             })}
 
         </>
