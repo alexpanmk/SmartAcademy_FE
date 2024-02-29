@@ -40,31 +40,11 @@ export function AuthenticationImage() {
 
     <div className={classes.wrapper}>
       <Flex mih={800} justify="center" align="center" direction="column" className={classes.image}>
-        <SignIn />
+        <SignIn
+          afterSignInUrl={'/course'}
+        />
       </Flex>
-      {/* <Paper className={classes.form} radius={0} p={30}>
-        <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-          Welcome back to SmartAcademy!
-        </Title> */}
 
-      {/* <TextInput value={email} onChange={(evt) => { setEmail(evt.currentTarget.value) }} label="Email address" placeholder="hello@gmail.com" size="md" />
-        <PasswordInput value={password} onChange={(evt) => { setPassword(evt.currentTarget.value) }} label="Password" placeholder="Your password" mt="md" size="md" />
-        <Checkbox label="Keep me logged in" mt="xl" size="md" /> */}
-      {/* <SignInButton>
-          <Button fullWidth mt="xl" size="md" onClick={() => login("alexpanmk@gmail.com", "password")}>
-            Login or Signup
-          </Button>
-        </SignInButton> */}
-
-      {/* <Text ta="center" mt="md">
-          Don&apos;t have an account?{' '}
-          <Anchor<'a'> href="#" fw={700} onClick={open}>
-            Register
-          </Anchor>
-        </Text> */}
-      {/* </Paper> */}
-
-      {/* Registration Modal */}
       <Modal opened={opened} onClose={close} title="Register" size="md" shadow="xl">
         <TextInput label="Name" placeholder="" />
         <TextInput label="Email address" placeholder="" />

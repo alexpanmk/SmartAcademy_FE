@@ -18,6 +18,8 @@ import { AuthenticationImage } from './Components/AuthenticationImage/Authentica
 import CourseListPage from "./Components/CourseListPage/CourseListPage";
 import CourseViewPage from "./Components/CourseViewPage/CourseViewPage";
 import LearnerView from "./Components/LearnerView/LearnerView";
+import SignUpFlow from "./Components/SignUpFlow/SignUpFlow";
+
 
 //Stores
 import useAuthStore from "./stores/useAuthStore";
@@ -58,6 +60,8 @@ function App() {
 
       <SignedIn>
         <Router>
+
+
           <AppShell.Navbar>
             <NavbarSimpleColored />
           </AppShell.Navbar>
@@ -65,6 +69,7 @@ function App() {
 
 
             <Routes>
+              <Route path="/signupflow" element={<CourseListPage signUpFlow />} />
               <Route path="/" element={<CourseListPage />} />
               <Route path="/learner/:courseId" element={<LearnerView />} />
               <Route path="/course/edit/:courseId" element={<CourseEditView />} />
