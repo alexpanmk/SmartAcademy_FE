@@ -41,7 +41,7 @@ export function AuthenticationImage() {
     <div className={classes.wrapper}>
       <Flex mih={800} justify="center" align="center" direction="column" className={classes.image}>
         <SignIn
-          afterSignInUrl={'/course'}
+          afterSignInUrl={'/signupflow'}
         />
       </Flex>
 

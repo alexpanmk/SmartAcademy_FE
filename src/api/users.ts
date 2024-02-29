@@ -1,5 +1,47 @@
 const BASE_URL = 'https://localhost:3000/users';
 
+//login user with clerk token - returns user email
+export async function loginUser(token) {
+  const loginURL = BASE_URL + '/login';
+  console.log(loginURL);
+  const res = await fetch(loginURL, {
+    method: "GET",
+    headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${token}`},
+    mode: 'cors',   
+
+    // body: JSON.stringify(token),
+  });
+  // Check if request was successful
+  if (res.ok) {
+    // res.json() will resolve to the user email
+    console.log(res);
+    return res.json();
+  } else {
+    throw new Error("Invalid Login");
+  }
+}
+
+// export async function loginUser(userData) {
+//   // Fetch uses an options object as a second arg to make requests
+//   // other than basic GET requests, include data, headers, etc.
+//   const loginURL = BASE_URL + '/login';
+//   console.log(loginURL);
+//   const res = await fetch(loginURL, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json"},
+//     // Fetch requires data payloads to be stringified
+//     // and assigned to a body property on the options object
+//     body: JSON.stringify(userData),
+//   });
+//   // Check if request was successful
+//   if (res.ok) {
+//     // res.json() will resolve to the JWT
+//     console.log(res);
+//     return res.json();
+//   } else {
+//     throw new Error("Invalid Login");
+//   }
+// }
 
 // Add a function to get user details by username or email
 export async function getUserByUsername(username) {
@@ -81,27 +123,7 @@ export async function storeToken(userData) {
   }
 }
 
-export async function loginUser(userData) {
-  // Fetch uses an options object as a second arg to make requests
-  // other than basic GET requests, include data, headers, etc.
-  const loginURL = BASE_URL + '/login';
-  console.log(loginURL);
-  const res = await fetch(loginURL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json"},
-    // Fetch requires data payloads to be stringified
-    // and assigned to a body property on the options object
-    body: JSON.stringify(userData),
-  });
-  // Check if request was successful
-  if (res.ok) {
-    // res.json() will resolve to the JWT
-    console.log(res);
-    return res.json();
-  } else {
-    throw new Error("Invalid Login");
-  }
-}
+
 
 export async function logoutUser(token, userData) {
   // Fetch uses an options object as a second arg to make requests

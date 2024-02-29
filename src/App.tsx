@@ -25,23 +25,45 @@ import SignUpFlow from "./Components/SignUpFlow/SignUpFlow";
 import useAuthStore from "./stores/useAuthStore";
 
 //Auth
-import { SignedOut, SignedIn, useAuth } from "@clerk/clerk-react";
+import { SignedOut, SignedIn, useAuth, useSession } from "@clerk/clerk-react";
 
 //UI Components
 import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimpleColored";
 import CourseEditView from "./Components/CourseEditView/CourseEditView";
 
+//service
+import { loginUser } from "./api/users";
 
 
 function App() {
 
+  const { session } = useSession();
+  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const { saveToken, token } = useAuthStore();
-  const { user, getToken } = useAuth();
+  useEffect(() => async () => {
 
-  useEffect(() => {
-    //Try save token to store
-    saveToken(getToken());
+    //get token from current clerk session
+    try {
+      const token = await session.getToken();
+      setToken(token);
+      console.log(token);
+    } catch (error) {
+      console.log(error);
+    }
+
+    //get user from current clerk session
+    try {
+      const user = await loginUser(token);
+      setUser(user);
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+
+    //send token to store to check user exists, if not open signupflow modal to complete flow and create user in BE
+
+    //if user exists, proceed.
 
   }, []);
 
