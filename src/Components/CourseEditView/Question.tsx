@@ -29,7 +29,7 @@ function Question(props) {
 
 
                     {question.options.map((option, index) => {
-                        return <Option question={question} key={index} index={index} onChange={onChange} />
+                        return <Option option={option} key={index} index={index} onChange={onChange} />
                     }
                     )}
                 </Stack>

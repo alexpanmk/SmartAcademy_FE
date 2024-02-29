@@ -7,6 +7,14 @@ function Option(props) {
 
     const { option, index, onChange } = props;
 
+
+    const [optionText, setOptionText] = useState(option) // 
+    const { dbOptionText } = useDebouncedValue(optionText, 200)
+
+    useEffect(() => {
+        onChange({ ...option, optionText: dbOptionText })
+    }, [dbOptionText])
+
     return (
         <>
             <Text fw="bold">Option {index + 1}
@@ -14,9 +22,9 @@ function Option(props) {
             </Text>
             <Group grow>
                 <Stack>
-                    {/* <input onChange={(evt) => {
-                        handleOptionFieldChange(index, optionIndex, evt.target.value)
-                    }} key={optionIndex} id={index} value={option} type="text" placeholder="Option" /> */}
+                    <input onChange={(evt) => {
+                        setOptionText(evt.target.value)
+                    }} value={option} type="text" placeholder="Option" />
                 </Stack>
             </Group>
         </>
