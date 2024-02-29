@@ -5,18 +5,20 @@ import { useDebouncedValue } from '@mantine/hooks'
 
 function Option(props) {
 
-    const { option, index, onChange } = props;
+    const { option, index, onChange } = props
 
 
     const [optionText, setOptionText] = useState() // 
-    const { dbOptionText } = useDebouncedValue(optionText, 200)
+    const [dbOptionText] = useDebouncedValue(optionText, 200)
 
     useEffect(() => {
         setOptionText(option)
     }, [])
 
     useEffect(() => {
-        onChange({ ...option, optionText: dbOptionText })
+
+        console.log("Option: ", dbOptionText)
+        onChange(optionText)
     }, [dbOptionText])
 
     return (

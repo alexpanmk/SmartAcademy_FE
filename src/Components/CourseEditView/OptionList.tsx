@@ -3,26 +3,35 @@ import { Space, Stack, Flex, Paper, Title, Text, Group, Button, Switch } from '@
 import Option from './Option';
 
 function OptionList(props) {
-    const { options, onChange } = props;
-    const [optionList, setOptionList] = useState(options);
 
+    console.log(props.options)
+
+    const { onChange } = props;
+    const [optionList, setOptionList] = useState([]);
+
+    useEffect(() => {
+
+        if (props.options) {
+            setOptionList(props.options)
+        }
+
+    }, [])
 
     //Propagate up the changes
     useEffect(() => {
+        console.log(optionList)
         onChange(optionList)
     }, [optionList])
 
     return (
         <>
-            {options.map((option, index) => {
+            {optionList.map((option, index) => {
                 return <Option onChange={
                     (option) => {
-                        const newOptions = [...options];
+                        const newOptions = [...optionList];
                         newOptions[index] = option;
-
                         setOptionList(newOptions);
 
-                        console.log(newOptions[index])
                     }} option={option} key={index} index={index} />
             })}
 

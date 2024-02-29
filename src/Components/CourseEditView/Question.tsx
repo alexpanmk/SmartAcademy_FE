@@ -12,12 +12,17 @@ function Question(props) {
 
     const [questionText, setQuestionText] = useState(question.questionText)
 
+
+
     //Debounced value allows time for user to complete input before updating state
     const [dbQuestionText] = useDebouncedValue(questionText, 200)
+
 
     useEffect(() => {
         onChange({ ...question, questionText: dbQuestionText })
     }, [dbQuestionText])
+
+
 
     return (
         <>
@@ -28,16 +33,12 @@ function Question(props) {
                     <input onChange={(evt) => { setQuestionText(evt.target.value) }} value={questionText} type="text" placeholder="Question" />
 
 
-                    {question.options.map((option, index) => {
-                        return <OptionList onChange={
-                            (option) => {
-                                const newOptions = [...question.options];
-                                newOptions[index] = option;
+                    <OptionList onChange={
+                        (optionList) => {
+                            onChange({ ...question, options: optionList })
+                        }} options={question.options} key={index} index={index}
+                    />
 
-                                console.log(newOptions[index])
-
-                            }} option={option} key={index} index={index} />
-                    })}
 
 
                     {/* {question.options.map((option, index) => {
