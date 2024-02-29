@@ -8,8 +8,12 @@ function Option(props) {
     const { option, index, onChange } = props;
 
 
-    const [optionText, setOptionText] = useState(option) // 
+    const [optionText, setOptionText] = useState() // 
     const { dbOptionText } = useDebouncedValue(optionText, 200)
+
+    useEffect(() => {
+        setOptionText(option)
+    }, [])
 
     useEffect(() => {
         onChange({ ...option, optionText: dbOptionText })
@@ -24,7 +28,7 @@ function Option(props) {
                 <Stack>
                     <input onChange={(evt) => {
                         setOptionText(evt.target.value)
-                    }} value={option} type="text" placeholder="Option" />
+                    }} value={optionText} type="text" placeholder="Option" />
                 </Stack>
             </Group>
         </>
