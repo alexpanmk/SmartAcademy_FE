@@ -5,7 +5,17 @@ import Question from './Question';
 
 function QuestionList(props) {
 
-    const [questions, setQuestions] = useState(props.questions)
+    const { questions, onChange } = props;
+
+    const [questionList, setQuestionList] = useState([])
+
+    useEffect(() => {
+        setQuestionList(questions)
+    }, [])
+
+    useEffect(() => {
+        onChange(questionList)
+    }, [questionList])
 
     return (
         <>
@@ -14,9 +24,9 @@ function QuestionList(props) {
                     return (
                         <>
                             <Question onChange={(question) => {
-                                const newQuestions = [...questions];
-                                newQuestions[index] = question;
-                                setQuestions(newQuestions);
+                                const newQuestionList = [...questions];
+                                newQuestionList[index] = question;
+                                setQuestionList(newQuestionList);
                             }} question={question} key={index} index={index} />
                             <Space h="xl" />
                         </>

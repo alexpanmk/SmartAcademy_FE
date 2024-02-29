@@ -3,6 +3,8 @@ import { Space, Stack, Flex, Paper, Title, Text, Group, Button, Switch } from '@
 import { useForm } from '@mantine/form';
 import { useDebouncedValue } from '@mantine/hooks';
 
+import Option from './Option';
+
 function Question(props) {
 
     const { question, index, onChange } = props;
@@ -24,23 +26,12 @@ function Question(props) {
                     <Text fw="bold">Question {index + 1}</Text>
                     <input onChange={(evt) => { setQuestionText(evt.target.value) }} value={questionText} type="text" placeholder="Question" />
 
-                    {/* {question.options.map((option, optionIndex) => {
-                                        return (
-                                            <>
-                                                <Text fw="bold">Option {optionIndex + 1}
-                                                    {optionIndex === 0 ? " (Right Answer)" : " (Wrong Answer)"}
-                                                </Text>
-                                                <Group grow>
-                                                    <Stack>
-                                                        <input onChange={(evt) => {
-                                                            handleOptionFieldChange(index, optionIndex, evt.target.value)
-                                                        }} key={optionIndex} id={index} value={option} type="text" placeholder="Option" />
-                                                    </Stack>
-                                                </Group>
-                                            </>
-                                        )
-                                    }
-                                    )} */}
+
+
+                    {question.options.map((option, index) => {
+                        return <Option question={question} key={index} index={index} onChange={onChange} />
+                    }
+                    )}
                 </Stack>
             </Paper>
         </>
