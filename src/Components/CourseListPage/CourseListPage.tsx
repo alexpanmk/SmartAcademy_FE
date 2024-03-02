@@ -44,7 +44,10 @@ function CourseListPage(props) {
                 <Grid.Col mih={75} span={{ base: 12, xs: 12 }}>
                     <Group justify='space-between'>
                         <Title order={1}>Courses</Title>
-                        <Button size="md" variant="light" radius="md">Create New Course</Button>
+                        <Button onClick={() => {
+                            setEditDetails({ editMode: false });
+                            openEditModal();
+                        }} size="md" variant="light" radius="md">Create New Course</Button>
                     </Group>
                 </Grid.Col>
 
