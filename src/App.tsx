@@ -7,6 +7,8 @@ import {
   useNavigate,
 } from "react-router-dom";
 // TODO: import { getUser } from "./service/users";
+import LandingPage from "./Components/LandingPage/LandingPage";
+
 
 import { AppShell } from '@mantine/core'
 
@@ -25,83 +27,87 @@ import SignUpFlow from "./Components/SignUpFlow/SignUpFlow";
 import useAuthStore from "./stores/useAuthStore";
 
 //Auth
-import { SignedOut, SignedIn, useAuth, useSession } from "@clerk/clerk-react";
+import { RedirectToSignIn, RedirectToSignUp, SignedOut, SignedIn, useAuth, useSession } from "@clerk/clerk-react";
 
 //UI Components
 import { NavbarSimpleColored } from "./Components/NavbarSimpleColored/NavbarSimpleColored";
 import CourseEditView from "./Components/CourseEditView/CourseEditView";
+import { HeaderMegaMenu } from "./Components/HeaderMegaMenu/HeaderMegaMenu";
 
 //service
-import { loginUser } from "./api/users";
+import { getUser } from "./api/users";
 
 
 function App() {
 
+  const { userId } = useAuth();
   const { session } = useSession();
   const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => async () => {
-
-    //get token from current clerk session
-    try {
-      const token = await session.getToken();
-      setToken(token);
-      console.log(token);
-    } catch (error) {
-      console.log(error);
-    }
-
-    //get user from current clerk session
-    try {
-      const user = await loginUser(token);
-      setUser(user);
-      console.log(user);
-    } catch (error) {
-      console.log(error);
-    }
-
-    //send token to store to check user exists, if not open signupflow modal to complete flow and create user in BE
-
-    //if user exists, proceed.
-
-  }, []);
 
 
   return (
-    <AppShell
-      padding="md"
-      header={{ height: 0 }}
-      navbar={{
-        width: 300
-      }}>
-
+    <>
       <SignedOut>
-        <AuthenticationImage />
+
+        <AppShell
+          padding={0}
+          header={{ height: 60 }}
+        >
+          <Router>
+            <AppShell.Header>
+              <HeaderMegaMenu />
+            </AppShell.Header>
+
+            <AppShell.Main pl={0} >
+
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/signup" element={<RedirectToSignUp />} />
+                <Route path="/signin" element={<RedirectToSignIn />} />
+                <Route path="/signupflow" element={<SignUpFlow />} />
+              </Routes>
+
+            </AppShell.Main>
+          </Router>
+        </AppShell>
+
+
+
+
       </SignedOut>
 
-      <SignedIn>
-        <Router>
+
+      <AppShell
+        padding="md"
+        header={{ height: 60 }}
+        navbar={{
+          width: 300
+        }}>
 
 
-          <AppShell.Navbar>
-            <NavbarSimpleColored />
-          </AppShell.Navbar>
-          <AppShell.Main pl={315}>
+        <SignedIn>
+          <Router>
 
 
-            <Routes>
-              <Route path="/signupflow" element={<CourseListPage signUpFlow />} />
-              <Route path="/" element={<CourseListPage />} />
-              <Route path="/learner/:courseId" element={<LearnerView />} />
-              <Route path="/course/edit/:courseId" element={<CourseEditView />} />
-              {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
-            </Routes>
 
-          </AppShell.Main>
-        </Router>
-      </SignedIn>
-    </AppShell >
+            <AppShell.Navbar>
+              <NavbarSimpleColored />
+            </AppShell.Navbar>
+            <AppShell.Main pl={315}>
+
+
+              <Routes>
+                <Route path="/" element={<CourseListPage />} />
+                <Route path="/learner/:courseId" element={<LearnerView />} />
+                <Route path="/course/edit/:courseId" element={<CourseEditView />} />
+                {/* <Route path="/course/:courseId" element={<CourseViewPage />} /> */}
+              </Routes>
+
+            </AppShell.Main>
+          </Router>
+        </SignedIn>
+      </AppShell >
+    </>
   )
 }
 export default App

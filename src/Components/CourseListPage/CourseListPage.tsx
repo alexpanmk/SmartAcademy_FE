@@ -16,7 +16,7 @@ import { Calendar } from '@mantine/dates'
 //SA Components
 import CourseList from './CourseList'
 import CourseEditView from '../CourseEditView/CourseEditView';
-import SignUpFlow from '../SignUpFlow/SignUpFlow';
+// import SignUpFlow from '../SignUpFlow/SignUpClerk';
 
 const child = <Skeleton height={160} radius="md" animate={false} />
 
@@ -68,7 +68,7 @@ function CourseListPage(props) {
             </Modal> */}
 
 
-            <Modal size={"auto"} opened={signUpFlowModalOpened} onClose={closeSignUpFlowModal} title={"Register"}>
+            <Modal size={"auto"} opened={signUpFlowModalOpened} onClose={closeSignUpFlowModal} title={""}>
                 <Flex p={20} miw={1000} direction="column">
                     <SignUpFlow />
                 </Flex>
