@@ -35,7 +35,7 @@ https://smartacademy-fe.onrender.com/
 - [Express](https://planetscale.com/) -MySQL DB
 - [Typescript](https://www.typescriptlang.org/)
 - [Mantine](https://mantine.dev/) -UI Library
-- [Mantine form](https://mantine.dev/form/use-form/) -Form validation
+- [Mantine hook](https://mantine.dev/hooks/use-debounced-value/) -Form validation
 - [Clerk](https://clerk.com/) -User Management Platform
 
 ### Other packeges used
