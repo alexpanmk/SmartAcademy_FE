@@ -1,4 +1,4 @@
-# 📝SmartInvoice
+# SMARTAcademy
 
 SmartAcademy is a massive open online course platform which allows learners to take courses to upskill themselves. It also allows training providers to put up online courses.
 
