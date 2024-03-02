@@ -6,7 +6,7 @@ The rational of choosing to do a MOOC platform is inspired by my previous role i
 
 ## Production URL
 
-https://
+https://smartacademy-fe.onrender.com/
 
 ## Screenshots
 
@@ -24,7 +24,7 @@ https://
 
 ### Course Content Creation
 
-<img width="1362" alt="Screenshot" src="https://github.com/natsumi-h/smartinvoice/assets/88537845/5e30c82d-a651-4614-9a48-9bdf5e0b418d">
+<img width="1362" alt="Screenshot" src="https://github.com/alexpanmk/SmartAcademy_FE/blob/main/src/assets/learnerquizview.png?raw=true">
 
 ## Technologies Used
 
