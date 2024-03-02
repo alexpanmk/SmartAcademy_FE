@@ -68,11 +68,11 @@ function CourseListPage(props) {
             </Modal> */}
 
 
-            <Modal size={"auto"} opened={signUpFlowModalOpened} onClose={closeSignUpFlowModal} title={""}>
+            {/* <Modal size={"auto"} opened={signUpFlowModalOpened} onClose={closeSignUpFlowModal} title={""}>
                 <Flex p={20} miw={1000} direction="column">
                     <SignUpFlow />
                 </Flex>
-            </Modal>
+            </Modal> */}
 
 
 

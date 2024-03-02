@@ -79,7 +79,7 @@ function App() {
 
       <AppShell
         padding="md"
-        header={{ height: 60 }}
+        header={{ height: 0 }}
         navbar={{
           width: 300
         }}>
